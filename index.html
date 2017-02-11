@@ -3,13 +3,57 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>The Psychic Game</title>
+    <title>CrystalsCollector</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <script type="text/javascript" src="assets/javascript/game.js"></script>
+
 </head>
-<body>
+
+<body background="assets/images/backgroundimage.jpg">
 
 
+<h1>CrystalsCollector!</h1>
 
+
+<div class="instruction">
+<p> You will be given a random number at the start of the game.</p>
+<p> There are four Crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
+<p> You win the game by matching your total score to random number, you lose the game if your total score goes above the random number.</p>
+<p> The value of each crystal is hidden from you until you click on it.</p>
+<p> Each time when the game starts, the game will change the values of each crystal.</p>
+
+</div>
+
+
+<div class="counter">
+<h2><span class="value"></span></h2> 
+</div>
+
+<div class="winloss">
+<p class="wonorlost"></p>
+<p class="win">Wins: </p>
+<p class="lose">Losses: </p>
+</div>
+
+<div class="crystals">
+<img id="emerald" src="assets/images/emerald.jpg" alt="Emerald" style="width:90px;height:90px;">
+
+<img id="blackdiamond" src="assets/images/blackdiamond.png" alt="diamond" style="width:90px;height:90px;">
+
+<img id="ruby" src="assets/images/ruby.png" alt="ruby" style="width:90px;height:90px;">
+
+<img id="saphire" src="assets/images/saphire.jpg" alt="saphire" style="width:90px;height:90px;">
+
+
+<div class="totalscore">
+<p> Your Total Score is: </p>
+</div>
+
+<div class="wonsofar">
+<p></p>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+
+<script type="text/javascript" src="assets/Javascript/game.js"></script>
 </body>
 </html>

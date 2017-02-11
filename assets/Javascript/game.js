@@ -1,48 +1,96 @@
 
-var alphabets = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-
-var wins = 0;
-var losses = 0;
-var guesses = 0;
-
-document.onkeyup = function(event) {
-    var user = String.fromCharCode(event.keyCode).toLowerCase();
-
-    var computer = alphabets[Math.floor(Math.random() * alphabets.length)];
-
-    guesses = guesses || 12
-
-    while (user !== computer.toString())
-    {
-        --guesses;
-        if (guesses === 0)
-        {
-            {break}
-            alert("The Letter was: " + computer);
-            
+    
+$( document ).ready(function(){
+  var Random=Math.floor(Math.random()*101+19)
+  // Selects a random number to be shown at the start of the game
+  // Number should be should be between 19 - 120
+  //
+  $('.counter').text(Random);
+  // Appending random number to the randomNumber id in the html doc
+  //
+  var num0= Math.floor(Math.random()*11+1)
+  var num1= Math.floor(Math.random()*11+1)
+  var num2= Math.floor(Math.random()*11+1)
+  var num3= Math.floor(Math.random()*11+1)
+  // Setting up random numbers for each jewel
+  // Random number has to be between 1 - 12
+  // 
+  var userTotal= 0; 
+  var wins= 0;
+  var losses = 0;
+  //  Decaring variables for tallies
+$('.win').text(wins);
+$('.lose').text(losses);
+//resets the game
+function reset(){
+      Random=Math.floor(Math.random()*101+19);
+      console.log(Random)
+      $('.counter').text(Random);
+      num0= Math.floor(Math.random()*11+1);
+      num1= Math.floor(Math.random()*11+1);
+      num2= Math.floor(Math.random()*11+1);
+      num3= Math.floor(Math.random()*11+1);
+      userTotal= 0;
+      $('.wonsofar').text(userTotal);
+      } 
+//adds the wins to the userTotal
+function winner(){
+  wins++; 
+  $('.wonorlost').text(wins);
+  reset();
+}
+//addes the losses to the userTotal
+function loser(){
+  losses++;
+  $('.wonorlost').text(losses);
+  reset()
+}
+//sets up click for jewels
+  $('#emerald').on ('click', function(){
+    userTotal = userTotal + num0;
+    console.log("New userTotal= " + userTotal);
+    $('.wonsofar').text(userTotal); 
+          //sets win/lose conditions
+        if (userTotal == Random){
+          winner();
         }
-
-    }
-    console.log("Great");
-            if (user == computer){
-            wins++;
-        }else if (user !== computer){
-            losses++;
+        else if ( userTotal > Random){
+          loser();
+        }   
+  })  
+  $('#blackdiamond').on ('click', function(){
+    userTotal = userTotal + num1;
+    console.log("New userTotal= " + userTotal);
+    $('.wonsofar').text(userTotal); 
+        if (userTotal == Random){
+          winner();
         }
-
-        var html = "" +
-        "<p>Wins: " + 
-        wins + 
-        "</p>" +
-        "<p>Losses: " + 
-        losses + 
-        "</p>" +
-        "<p>Guesses Left: " + (12 - guesses) 
-        +
-        "<p>Your Guesses so far: " + user
-        guesses +
-        "</p>";
-
-        document.querySelector('#game').innerHTML = html;
-        
-}    
+        else if ( userTotal > Random){
+          loser();
+        } 
+  })  
+  $('#ruby').on ('click', function(){
+    userTotal = userTotal + num2;
+    console.log("New userTotal= " + userTotal);
+    $('.wonsofar').text(userTotal);
+//sets win/lose conditions
+          if (userTotal == Random){
+          winner();
+        }
+        else if ( userTotal > Random){
+          loser();
+        } 
+  })  
+  $('#saphire').on ('click', function(){
+    userTotal = userTotal + num3;
+    console.log("New userTotal= " + userTotal);
+    $('.wonsofar').text(userTotal); 
+      
+          if (userTotal == Random){
+          winner();
+        }
+        else if ( userTotal > Random){
+          loser();
+        }
+  });   
+}); 
